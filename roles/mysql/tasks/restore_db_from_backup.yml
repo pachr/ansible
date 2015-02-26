@@ -1,0 +1,20 @@
+---
+
+- name: Register the current date to a variable
+  shell: date +%Y%m%d
+  register: current_date
+
+- name: Copy the backup file from the S3 bucket
+  s3: bucket={{ db_backup_bucket }}
+      object={{ db_name }}.{{ db_backup_environment }}.{{ current_date.stdout }}.sql.gz
+      dest=/tmp/{{ db_name }}.{{ db_backup_environment }}.{{ current_date.stdout }}.sql.gz
+      mode=get
+      aws_access_key={{ aws_access_key }}
+      aws_secret_key={{ aws_secret_key }}
+
+- name: Restore database from backup
+  mysql_db: name={{ db_name }}
+            login_user=itpartners
+            login_password={{ mysql_root_password }}
+            state=import
+            target=/tmp/{{ db_name }}.{{ db_backup_environment }}.{{ current_date.stdout }}.sql.gz

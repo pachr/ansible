@@ -1,0 +1,22 @@
+#Create my-security-group-test
+---
+- name: Create security group
+  local_action: 
+    description: "Access security group"
+    module: ec2_group
+    name: "{{security_group}}"
+    region: "{{region}}"
+    rules:
+      - proto: "{{rule1_proto}}"
+        from_port: "{{rule1_port}}"
+        to_port: "{{rule1_port}}"
+        cidr_ip: "{{rule1_cidr_ip}}"
+      - proto: "{{rule2_proto}}"
+        cidr_ip: "{{rule2_cidr_ip}}"
+        from_port: "{{rule2_port}}"
+        to_port: "{{rule2_port}}"
+    rules_egress:
+      - proto: "{{rule1_egress_proto}}"
+        from_port: "{{rule1_egress_port}}"
+        to_port: "{{rule1_egress_port}}"
+        cidr_ip: "{{rule1_egress_cidr_ip}}"

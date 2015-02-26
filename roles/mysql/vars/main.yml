@@ -1,0 +1,4 @@
+---
+
+mysql_config_template: my.cnf.j2
+setup_mysql: true

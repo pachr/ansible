@@ -1,0 +1,44 @@
+---
+#Create a security group on AWS EC2
+#my-security-group-test
+- name: Create security group
+  hosts: "{{hosts}}" #127.0.0.1 in hosts file
+  connection: "{{connection}}"
+  gather_facts: False
+  vars:
+    security_group: my-security-group
+    region: eu-west-1
+    rule1_proto: tcp
+    rule1_port: 80
+    rule1_cidr_ip: 0.0.0.0/0
+    rule2_proto: tcp
+    rule2_cidr_ip: 0.0.0.0/0
+    rule2_port: 22
+    rule1_egress_proto: tcp
+    rule1_egress_port: 80
+    rule1_egress_cidr_ip: 0.0.0.0/0
+  roles:
+    - ec2_provisionning
+  tags:
+    - security_group #We can skip it 
+
+#Launch one instance
+- name: Spin up instances
+  hosts: "{{hosts}}" #127.0.0.1 in hosts file
+  connection: "{{connection}}"
+  gather_facts: False
+  vars:
+    region: eu-west-1
+    keypair: "{{keypair}}"
+    group: my-security-group
+    instance_type: t2.micro
+    image: ami-234ecc54
+    count: 1
+    hosts_launched_groupname: launched
+    tag_name: AnsibleTest
+  roles:
+    - ec2_launch_instances
+  tags:
+    - launch_instances
+
+

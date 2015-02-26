@@ -1,0 +1,20 @@
+---
+
+- name: Register database status to a variable
+  shell: mysql -u root -e "SHOW DATABASES;" | grep ^{{ db_name }}$
+  register: db_status
+  ignore_errors: yes
+
+- name: Create the application database
+  mysql_db: name={{ db_name }}
+            login_user=itpartners
+            login_password={{ mysql_root_password }}
+            state=present
+
+- name: Create application database user
+  mysql_user: name={{ db_user }}
+              password={{ db_password }}
+              priv=*.*:ALL host='%' state=present
+
+- include: restore_db_from_backup.yml
+  when: restore_db_from_backup is defined and restore_db_from_backup and not db_status.stdout

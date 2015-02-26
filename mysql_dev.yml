@@ -1,0 +1,22 @@
+---
+- name: Provision a MySQL dev server
+  hosts: "{{ hosts }}"
+  sudo: yes
+  sudo_user: root
+  remote_user: "{{remote_user}}"
+  vars:
+    update_apt_cache: yes
+    kernel_shmmax: 5368709120
+    shared_buffers: 3840MB
+    effective_cache_size: 7680MB
+    work_mem: 32MB
+    maintenance_work_mem: 1024MB
+    checkpoint_segments: 32
+    checkpoint_completion_target: 0.9
+    innodb_buffer_pool_size: 10G
+    innodb_buffer_pool_instances: 5
+  # vars_files:
+  #   - env_vars/noodleapi/dev.yml
+  roles:
+    # - base
+    - mysql
