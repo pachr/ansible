@@ -62,49 +62,49 @@ ansible-playbook -i inventory_name aws_ec2_[dev/stage/prod].yml --extra-vars="ho
 For ec2_launch_instances 
 
 - hosts : hosts groupname
-* Type : string
-* No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
+ * Type : string
+ * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
 - connection : 
-* Type : string
-* No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
+ * Type : string
+ * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
 - secutity_group : Security group name (will be created with this name)
 *It's also the groupname in my inventories*
-* Type : string
-* Default : my_security_group_[dev/prod/stage]
+ * Type : string
+ * Default : my_security_group_[dev/prod/stage]
 
 - region : Region name on AWS
-* Type : string
-* Default : eu-west-1
+ * Type : string
+ * Default : eu-west-1
 
 - server_env : Environment name (development, production, staging...)
-* Type : string
-* Default : dev, prod or consistent
+ * Type : string
+ * Default : dev, prod or consistent
 
 - keypair: keypair name (not the path and without .pem)
-* Type : String
-* Must be specify in extra vars
+ * Type : String
+ * Must be specify in extra vars
 
 - group: 
-* Type : String
-* Default : my-security-group-[dev/stage/prod]
+ * Type : String
+ * Default : my-security-group-[dev/stage/prod]
     
 - instance_type: 
-* Type : String
-* Default : t2.micro (Free on AWS)
+ * Type : String
+ * Default : t2.micro (Free on AWS)
     
 - image: (It could be a custom image)
-* Type : String
-* Default : ami-234ecc54 (Free on AWS)
+ * Type : String
+ * Default : ami-234ecc54 (Free on AWS)
     
 - count: Number of instances to launch
-* Type : Integer
-* Default : 1
+ * Type : Integer
+ * Default : 1
 
 - tag_name
-* Type : String
-* Default : Dev / Consistent / Prod
+ * Type : String
+ * Default : Dev / Consistent / Prod
 
 
 # ansible-memcached
@@ -160,8 +160,8 @@ ansible-playbook -i hosts  memcached.yml --extra-vars "hosts=launched remote_use
 ##Vars
 
 - hosts : hosts groupname
-* Type : string
-* No default, it must be specifiy in cmd
+ * Type : string
+ * No default, it must be specifiy in cmd
 
 - remote_user : the remote user on AWS
  * Type : string
