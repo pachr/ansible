@@ -192,9 +192,10 @@ innodb_buffer_pool_instances: 5
 CMD
 
 ```shell
- ansible-playbook -i hosts_[dev/consistent/prod] mysql_[dev/consistent/prod].yml --extra-vars="hosts=host_groupname remote_user=remote_user_name mysql_root_password=password_root_user" --private-key=~/.ssh/pac-vm-keypair.pem
+ ansible-playbook -i hosts_[dev/stage/consistent] mysql_[dev/stage/prod].yml --extra-vars="hosts=hosts_groupname remote_user=remote_username mysql_root_password=root_user_password db_name=db_name_to_create db_user=db_username db_password=custom_pass" --private-key=/path/to/keypair.pem
 
 ```
 
-##Bugs to fix
-A bug in setup.yml when we restarted the mysql service
+##Bug fixed
+
+There was a bug with innodb_buffer, MAX 8G for a t2.micro instance_type on AWS EC2
