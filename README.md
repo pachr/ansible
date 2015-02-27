@@ -3,7 +3,7 @@
 This folder contains playbooks for :
 - AWS EC2 provisioning (Security group and launch instances)
 - Install MySQL server
-- Installe Memcached
+- Install Memcached
 
 There are always three scripts (dev / stage / prod) for each roles
 
@@ -40,7 +40,7 @@ For ec2_provisioning (Create a security group)
  * Type : string
  * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
-- secutity_group : Security group name (will be created with this name)
+- security_group : Security group name (will be created with this name)
 *It's also the groupname in my inventories*
  * Type : string
  * Default : my_security_group_[dev/prod/stage]
@@ -56,7 +56,7 @@ For ec2_provisioning (Create a security group)
 CMD :
 
 ```shell
-ansible-playbook -i inventory_name aws_ec2_[dev/stage/prod].yml --extra-vars="hosts=local connection=local security_group=secutity_groupname region=region_name server_env=environment_name" --private-key=/path/to/keypair.pem --tags "ec2_provisionning"
+ansible-playbook -i inventory_name aws_ec2_[dev/stage/prod].yml --extra-vars="hosts=local connection=local security_group=security_groupname region=region_name server_env=environment_name" --private-key=/path/to/keypair.pem --tags "ec2_provisionning"
 
 ```
 For ec2_launch_instances 
@@ -69,7 +69,7 @@ For ec2_launch_instances
  * Type : string
  * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
-- secutity_group : Security group name (will be created with this name)
+- security_group : Security group name (will be created with this name)
 *It's also the groupname in my inventories*
  * Type : string
  * Default : my_security_group_[dev/prod/stage]
