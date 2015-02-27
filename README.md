@@ -177,15 +177,15 @@ ansible-playbook -i hosts  memcached.yml --extra-vars "hosts=launched remote_use
 
 Others vars :
 
-kernel_shmmax: 5368709120
-shared_buffers: 3840MB
-effective_cache_size: 7680MB
-work_mem: 32MB
-maintenance_work_mem: 1024MB
-checkpoint_segments: 32
-checkpoint_completion_target: 0.9
-innodb_buffer_pool_size: 10G
-innodb_buffer_pool_instances: 5
+kernel_shmmax: 5368709120  
+shared_buffers: 3840MB  
+effective_cache_size: 7680MB  
+work_mem: 32MB  
+maintenance_work_mem: 1024MB  
+checkpoint_segments: 32  
+checkpoint_completion_target: 0.9  
+innodb_buffer_pool_size: 10G  
+innodb_buffer_pool_instances: 5  
 
 ##Usage
 
