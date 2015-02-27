@@ -1,4 +1,4 @@
-# ansible_noodle_partners
+# ansible
 
 This folder contains playbooks for :
 - AWS EC2 provisioning (Security group and launch instances)
