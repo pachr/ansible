@@ -3,6 +3,10 @@
 - name: Install MySQL package
   apt: name=mysql-server update_cache={{ update_apt_cache }} state=installed
 
+- name: Install Python MySQL
+  apt: name=python-mysqldb state=installed 
+
+#Setup with custon innodb_buffer vars
 - include: setup.yml
   when: setup_mysql
 

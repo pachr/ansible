@@ -13,10 +13,10 @@
     maintenance_work_mem: 1024MB
     checkpoint_segments: 32
     checkpoint_completion_target: 0.9
-    innodb_buffer_pool_size: 10G
+    innodb_buffer_pool_size: 512M #/!\ t2.micro volume = 8G MAX
     innodb_buffer_pool_instances: 5
-  vars_file:
-    - env_vars/noodleapi/consistent.yml
+  # vars_file:
+  #   - env_vars/noodleapi/consistent.yml
   roles:
-    - base
+    # - base
     - mysql

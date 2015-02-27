@@ -13,19 +13,8 @@
   notify: restart mysql
   tags: mysqlconfig
 
-- name: Copy custom usr.sbin.mysqld file
-  template: src=usr.sbin.mysqld.j2
-            dest=/etc/apparmor.d/usr.sbin.mysqld
-            owner=root
-            group=root
-            mode=0644
-            backup=yes
-
-- name: Restart apparmor
-  service: name=apparmor state=restarted
-
-- name: Initialize the new data directory
-  command: mysql_install_db --user=mysql --datadir=/var/lib/mysql
+#We don't need to use a custon usr.sbin.mysqld file
+#We don't need to restart apparmor => We don't change the datadir
 
 - name: Ensure MySQL server is started
   service: name=mysql state=started
