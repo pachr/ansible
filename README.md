@@ -33,25 +33,25 @@ ansible-playbook -i inventory_name aws_ec2_[dev/stage/prod].yml --extra-vars="ho
 For ec2_provisioning (Create a security group)
 
 - hosts : hosts groupname
-* Type : string
-* No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
+ * Type : string
+ * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
 - connection : 
-* Type : string
-* No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
+ * Type : string
+ * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
 - secutity_group : Security group name (will be created with this name)
 *It's also the groupname in my inventories*
-* Type : string
-* Default : my_security_group_[dev/prod/stage]
+ * Type : string
+ * Default : my_security_group_[dev/prod/stage]
 
 - region : Region name on AWS
-* Type : string
-* Default : eu-west-1
+ * Type : string
+ * Default : eu-west-1
 
 - server_env : Environment name (development, production, staging...)
-* Type : string
-* Default : dev, prod or consistent
+ * Type : string
+ * Default : dev, prod or consistent
 
 CMD :
 
