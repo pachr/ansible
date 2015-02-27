@@ -1,0 +1,36 @@
+---
+#Create a security group on AWS EC2
+#my-security-group-test
+- name: Create security group
+  hosts: "{{hosts}}" #127.0.0.1 in hosts file
+  connection: "{{connection}}"
+  gather_facts: False
+  vars:
+    security_group: my-security-group-prod
+    region: eu-west-1
+    server_env: prod
+  roles:
+    - ec2_provisionning
+  tags:
+    - security_group #We can skip it 
+
+#Launch one instance
+- name: Spin up instances
+  hosts: "{{hosts}}" #127.0.0.1 in hosts file
+  connection: "{{connection}}"
+  gather_facts: False
+  vars:
+    region: eu-west-1
+    keypair: "{{keypair}}"
+    group: my-security-group-prod
+    instance_type: t2.micro
+    image: ami-234ecc54
+    count: 1
+    server_env: prod
+    tag_name: Prod
+  roles:
+    - ec2_launch_instances
+  tags:
+    - launch_instances
+
+

@@ -1,0 +1,14 @@
+---
+
+- name: Install Memcached
+  hosts: "{{hosts}}"
+  gather_facts: True
+  sudo: yes
+  remote_user: "{{remote_user}}"
+  vars:
+    listen: 127.0.0.1
+    user: root
+    memory: 64
+    max_connections: 1024
+  roles:
+    - memcached

@@ -2,21 +2,21 @@
 ---
 - name: Create security group
   local_action: 
-    description: "Access security group"
+    description: "Access to the {{server_env}} servers"
     module: ec2_group
     name: "{{security_group}}"
     region: "{{region}}"
     rules:
-      - proto: "{{rule1_proto}}"
-        from_port: "{{rule1_port}}"
-        to_port: "{{rule1_port}}"
-        cidr_ip: "{{rule1_cidr_ip}}"
-      - proto: "{{rule2_proto}}"
-        cidr_ip: "{{rule2_cidr_ip}}"
-        from_port: "{{rule2_port}}"
-        to_port: "{{rule2_port}}"
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        cidr_ip: 0.0.0.0/0
+        from_port: 22
+        to_port: 22
     rules_egress:
-      - proto: "{{rule1_egress_proto}}"
-        from_port: "{{rule1_egress_port}}"
-        to_port: "{{rule1_egress_port}}"
-        cidr_ip: "{{rule1_egress_cidr_ip}}"
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
