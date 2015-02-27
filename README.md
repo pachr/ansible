@@ -70,7 +70,6 @@ For ec2_launch_instances
  * No default, it must be specifiy in cmd => local or 127.0.0.1 should be a good choice 
 
 - security_group : Security group name (will be created with this name)
-*It's also the groupname in my inventories*
  * Type : string
  * Default : my_security_group_[dev/prod/stage]
 
