@@ -33,4 +33,4 @@
   tags:
     - launch_instances
 
-
+- include: "{{ provision_playbook}} hosts=ec2_temp_group"
